@@ -6,13 +6,18 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Contact from './components/aboutus/Contact';
 import About from './components/aboutus/About';
+  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import EmailActivation from './components/auth/EmailActivation';
+
 
 function App() {
 	return (
 		<div>
+			<ToastContainer />
 			<BrowserRouter>
 				{/* public */}
-				<Navbar />
+				<Navbar  />
 				<Routes>
 					<Route
 						path="/"
@@ -33,6 +38,10 @@ function App() {
 					<Route
 						path="/about"
 						element={<About />}
+					/>
+					<Route
+						path="/activate/:id/:token/"
+						element={<EmailActivation />}
 					/>
 				</Routes>
 			</BrowserRouter>

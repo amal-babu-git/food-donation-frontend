@@ -104,6 +104,7 @@ const Register = () => {
 				toast.error('something went wrong.', { hideProgressBar: true });
 			});
 	};
+	
 
 	return (
 		<div>

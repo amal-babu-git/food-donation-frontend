@@ -1,15 +1,22 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { logout, selectAccessToken } from '../../features/auth/authUserSlice';
 // import { NavLink, Link } from 'react-router-dom';
 
 const Navbar = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const accessToken = useSelector(selectAccessToken);
 
 	const onClickLogo = () => {
 		navigate('/');
 	};
 	const onClickLogin = () => {
 		navigate('/login');
+	};
+	const onClickLogout = () => {
+		dispatch(logout());
 	};
 	const onClickAboutUs = () => {
 		navigate('/about');
@@ -84,12 +91,23 @@ const Navbar = () => {
 					>
 						Register
 					</button>
-					<button
-						className="btn btn-primary mx-1"
-						onClick={onClickLogin}
-					>
-						Login
-					</button>
+
+					{/* if access token available then display Logout button else display login button */}
+					{accessToken ? (
+						<button
+							className="btn btn-primary mx-1"
+							onClick={onClickLogout}
+						>
+							Logout
+						</button>
+					) : (
+						<button
+							className="btn btn-primary mx-1"
+							onClick={onClickLogin}
+						>
+							Login
+						</button>
+					)}
 				</div>
 			</div>
 		</>

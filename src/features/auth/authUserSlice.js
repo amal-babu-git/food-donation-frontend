@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { FAILED, LOADING, LOGIN_API, SUCCESS } from '../../apis'
+import { FAILED, FETCH_USER_INFO_API, LOADING, LOGIN_API, SUCCESS } from '../../apis'
 import axios from 'axios'
+import axiosInstance from './axios'
 
 
 export const login = createAsyncThunk('auth/login', async (formValues) => {
-  console.log("from slice",formValues.email)
+
   const response = await axios.post(LOGIN_API,
     { email: formValues.email, password: formValues.password },
     { headers: { 'Content-Type': 'application/json' } })
@@ -14,12 +15,22 @@ export const login = createAsyncThunk('auth/login', async (formValues) => {
   return response.data
 })
 
+export const fetchUserInfo = createAsyncThunk('auth/fetchUserInfo', async () => {
+  const response = await axiosInstance.get(`/user/`)
+  console.log("user info", response.data)
+  return response.data
+})
+
 const initialState = {
 
   accessToken: localStorage.getItem('accessToken') ? JSON.parse(localStorage.getItem('accessToken')) : null,
   refreshToken: localStorage.getItem('refreshToken') ? JSON.parse(localStorage.getItem('refreshToken')) : null,
   loginStatus: null,
   loginError: null,
+
+  fetchUserInfoStatus: '',
+  fetchUserInfoError: '',
+  userInfo: [],
 
 }
 
@@ -76,6 +87,18 @@ const authUserSlice = createSlice({
         state.loginStatus = FAILED
         state.loginError = action.error.message
       })
+
+      .addCase(fetchUserInfo.pending, (state, action) => {
+        state.fetchUserInfoStatus = LOADING
+      })
+      .addCase(fetchUserInfo.fulfilled, (state, action) => {
+        state.fetchUserInfoStatus = SUCCESS
+        state.userInfo = action.payload
+
+      })
+      .addCase(fetchUserInfo.rejected, (state, action) => {
+        state.fetchUserInfoStatus = FAILED
+      })
   }
 });
 
@@ -83,6 +106,8 @@ export const { setCredentials, setLoginStatusToNull, setUserInfo, logout } = aut
 
 export const getLoginInStatus = (state) => state.auth.loginStatus;
 export const getLoginInError = (state) => state.auth.loginError;
+export const getFetchUserInfoStatus = (state) => state.auth.fetchUserInfoStatus;
+export const getFetchUserInfoError = (state) => state.auth.fetchUserInfoError;
 
 export const selectAccessToken = (state) => state.auth.accessToken;
 export const selectRefreshToken = (state) => state.auth.refreshToken;

@@ -9,6 +9,8 @@ import About from './components/aboutus/About';
   import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import EmailActivation from './components/auth/EmailActivation';
+import User from './components/user/User';
+import Profile from './components/user/Profile';
 
 
 function App() {
@@ -17,32 +19,21 @@ function App() {
 			<ToastContainer />
 			<BrowserRouter>
 				{/* public */}
-				<Navbar  />
+				<Navbar />
 				<Routes>
-					<Route
-						path="/"
-						element={<Home />}
-					/>
-					<Route
-						path="/register"
-						element={<Register />}
-					/>
-					<Route
-						path="/login"
-						element={<Login />}
-					/>
-					<Route
-						path="/contact"
-						element={<Contact />}
-					/>
-					<Route
-						path="/about"
-						element={<About />}
-					/>
-					<Route
-						path="/activate/:id/:token/"
-						element={<EmailActivation />}
-					/>
+					<Route path="/" element={<Home />} />
+					<Route path="/register" element={<Register />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/contact" element={<Contact />} />
+					<Route path="/about" element={<About />} />
+					<Route path="/activate/:id/:token/" element={<EmailActivation />} />
+
+
+					{/* private routs */}
+					<Route path="/user" element={<User />} >
+						<Route path="/user/profile" element={<Profile />} />
+
+					</Route>
 				</Routes>
 			</BrowserRouter>
 		</div>

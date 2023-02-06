@@ -84,7 +84,7 @@ const Login = () => {
         autoClose: 1000,
         hideProgressBar: true,
       });
-      // setTimeout(() => navigate("/user/profile"), 1000);
+      setTimeout(() => navigate("/user/profile"), 1000);
 
     } else if (loginStatus === FAILED) {
       console.log(loginError);

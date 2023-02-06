@@ -3,6 +3,7 @@ export const API = process.env.REACT_APP_BACKEND;
 export const REGISTER_API = `${API}auth/users/`
 export const VERIFY_EMAIL_API = `${API}auth/users/activation/`
 export const LOGIN_API = `${API}auth/jwt/create/`
+export const FETCH_USER_INFO_API = `${API}users/`
 
 
 

@@ -107,9 +107,10 @@ const Register = () => {
 	
 
 	return (
-		<div>
+		<div className="h-screen">
+			<p>-</p>
 			{loading ? (
-				<progress className="progress progress-primary mt-0 mb-1"></progress>
+				<progress className="progress progress-primary mt-10 mb-1 fixed z-50"></progress>
 			) : (
 				<div className="hero min-h-screen bg-base-200">
 					<div className="hero-content flex-col lg:flex-row-reverse mt-14">

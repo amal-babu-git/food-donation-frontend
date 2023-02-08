@@ -30,10 +30,13 @@ const Navbar = () => {
 	const onClickRegister = () => {
 		navigate('/register');
 	};
+	const onClickDonation = () => {
+		navigate('/donar/donation');
+	};
 
 	return (
 		<>
-			<div className="navbar bg-base-100v fixed">
+			<div className="navbar bg-base-100v fixed z-50 bg-white shadow-md">
 				<div className="navbar-start">
 					<div className="dropdown">
 						<label
@@ -63,6 +66,9 @@ const Navbar = () => {
 								<button onClick={onClickProfile}>Profile</button>
 							</li>
 							<li>
+								<button onClick={onClickProfile}>Donation</button>
+							</li>
+							<li>
 								<button onClick={onClickAboutUs}>About Us</button>
 							</li>
 
@@ -86,6 +92,9 @@ const Navbar = () => {
 							<button onClick={onClickProfile}>Profile</button>
 						</li>
 						<li>
+							<button onClick={onClickDonation}>Donation</button>
+						</li>
+						<li>
 							<button onClick={onClickContactUs}>Contact Us</button>
 						</li>
 						<li>
@@ -94,12 +103,14 @@ const Navbar = () => {
 					</ul>
 				</div>
 				<div className="navbar-end">
-					<button
-						className="btn btn-primary"
-						onClick={onClickRegister}
-					>
-						Register
-					</button>
+					{!accessToken && (
+						<button
+							className="btn btn-primary"
+							onClick={onClickRegister}
+						>
+							Register
+						</button>
+					)}
 
 					{/* if access token available then display Logout button else display login button */}
 					{accessToken ? (

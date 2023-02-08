@@ -13,7 +13,7 @@ const User = () => {
 			) : (
 				<div>
 					<p>-</p>
-					<p className="mt-10">Login required</p>
+					<p className="mt-10 text-red-600 p-10 font-bold">Login required</p>
 				</div>
 			)}
 		</div>

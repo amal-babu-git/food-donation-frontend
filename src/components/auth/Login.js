@@ -3,7 +3,7 @@ import { EMAIL_REGEXP, FAILED, LOADING, LOGIN_API, SUCCESS } from '../../apis';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getLoginInError, getLoginInStatus, login, selectAccessToken, setLoginStatusToNull, } from '../../features/auth/authUserSlice';
+import { fetchUserInfo, getLoginInError, getLoginInStatus, login, selectAccessToken, setLoginStatusToNull, } from '../../features/auth/authUserSlice';
 
 
 const Login = () => {
@@ -79,12 +79,12 @@ const Login = () => {
       toast.info('Please wait, It will take sometime', { progress: false });
     } else if (loginStatus === SUCCESS) {
 
-
+      dispatch(fetchUserInfo())
       toast.success('Login done, welcome', {
         autoClose: 1000,
         hideProgressBar: true,
       });
-      setTimeout(() => navigate("/user/profile"), 1000);
+      setTimeout(() => navigate("/user/profile"), 3000);
 
     } else if (loginStatus === FAILED) {
       console.log(loginError);

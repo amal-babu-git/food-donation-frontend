@@ -10,6 +10,7 @@ const EmailActivation = () => {
 	const [loading, setLoading] = useState(false);
 
 	const onClickHandler = async () => {
+		setLoading(true)
 		await axios
 			.post(
 				VERIFY_EMAIL_API,
@@ -25,10 +26,12 @@ const EmailActivation = () => {
 			)
 			.then((response) => {
 				console.log(response);
+				setLoading(false)
 				toast.success('Successfully verified');
 				navigate('/login');
 			})
 			.catch((err) => {
+				setLoading(false)
 				console.log(err);
 				toast.error('Email not verified, Please try again');
 			});
@@ -36,9 +39,10 @@ const EmailActivation = () => {
 
 	console.log('id', id, token);
 	return (
-		<div>
+		<div className="h-screen">
+			<p className="">-</p>
 			{loading && (
-				<progress className="progress progress-primary mt-0 mb-1"></progress>
+				<progress className="progress progress-primary mt-10 mb-1 fixed z-50"></progress>
 			)}
 			<div>
 				<div className="hero min-h-screen bg-base-200">

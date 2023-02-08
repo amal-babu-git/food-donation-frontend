@@ -29,11 +29,11 @@ const Profile = () => {
 			);
 			break;
 		case SUCCESS:
-			console.log("email",userInfo[0]?.email)
+			// console.log("email",userInfo[0]?.email)
 			content = (
 				<div className="hero min-h-screen bg-base-200">
 					<div className="hero-content flex-col lg:flex-row-reverse">
-						<div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+						<div className="card w-96 shadow-2xl bg-base-100">
 							<div className="card-body">
 								<p className="card-title mb-5 ">My Profile</p>
 								<p className="text-blue-600">{userInfo[0]?.user_type==='D' && 'Donar' }</p>

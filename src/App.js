@@ -11,6 +11,9 @@ import { ToastContainer } from 'react-toastify';
 import EmailActivation from './components/auth/EmailActivation';
 import User from './components/user/User';
 import Profile from './components/user/Profile';
+import Donation from './components/donar/Donation';
+import Donar from './components/donar/Donar';
+import Footer from './components/footer/Footer';
 
 
 function App() {
@@ -32,9 +35,15 @@ function App() {
 					{/* private routs */}
 					<Route path="/user" element={<User />} >
 						<Route path="/user/profile" element={<Profile />} />
+						
+
+					</Route>
+					<Route path="/donar" element={<Donar />} >
+						<Route path="/donar/donation" element={<Donation />} />
 
 					</Route>
 				</Routes>
+				<Footer/>
 			</BrowserRouter>
 		</div>
 	);

@@ -5,6 +5,8 @@ export const VERIFY_EMAIL_API = `${API}auth/users/activation/`
 export const LOGIN_API = `${API}auth/jwt/create/`
 export const FETCH_USER_INFO_API = `${API}users/`
 
+export const DONATION_API = `${API}donation/`
+
 
 
 // constants 

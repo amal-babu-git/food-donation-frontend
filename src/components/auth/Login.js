@@ -103,6 +103,7 @@ const Login = () => {
             <p className="py-6">
               "Join the fight against hunger by logging into your Warm Hugs account. Here, you'll have the power to make a difference, one meal at a time."
             </p>
+            
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div className="card-body">

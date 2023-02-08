@@ -36,8 +36,11 @@ const Donar = () => {
 			})
 	}
 
+
+	
+
 	return (
-		<div>
+		<div className='h-screen'>
 			{accessToken ? (
 				<Outlet />
 			) : (

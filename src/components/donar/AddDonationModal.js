@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axiosInstance from '../../features/auth/axios';
+import { DONATION_API } from '../../apis';
+import { toast } from 'react-toastify';
+import { setDonations } from '../../features/donar/donarSlice';
+import { useDispatch } from 'react-redux';
 
 const AddDonationModal = () => {
 	const initialValues = {
@@ -9,6 +14,8 @@ const AddDonationModal = () => {
 		contact: '',
 		address: '',
 	};
+
+	const dispatch=useDispatch()
 
 	const [formValues, setFormValues] = useState(initialValues);
 	const [formErrors, setFormErrors] = useState({});
@@ -30,7 +37,7 @@ const AddDonationModal = () => {
 	const validate = (values) => {
 		const errors = {};
 
-        // FIXME: TODO:simply pass now
+		// FIXME: TODO:simply pass now
 		// if (values.password.length < 6) {
 		// 	errors.password = 'Password must be more than 5 character';
 		// }
@@ -48,8 +55,43 @@ const AddDonationModal = () => {
 			console.log('fv', formValues);
 			setLoading(true);
 			// call function
+			postDonationHandler();
 		}
 	}, [formErrors]);
+
+	const postDonationHandler = async () => {
+		axiosInstance
+			.post(DONATION_API, formValues)
+			.then((response) => {
+				console.log('post donations', response.data);
+				fetchDonations()
+				toast.success("Successfully added",{hideProgressBar:true})
+				formValues.address=''
+				formValues.contact=''
+				formValues.food_name=''
+				formValues.food_type=''
+				formValues.quantity=''
+				
+			})
+			.catch((err) => {
+				console.log(err);
+				toast.error(err.data);
+			});
+	};
+
+	// FIXME: same code used in diff component fix this later  with single code
+	const fetchDonations = async () => {
+		await axiosInstance
+			.get(DONATION_API)
+			.then((response) => {
+				console.log('donation', response.data);
+				dispatch(setDonations(response.data));
+			})
+			.catch((err) => {
+				console.log(err);
+				toast.error('Something went wrong!, cant fetch donation list');
+			});
+	};
 
 	return (
 		<div>

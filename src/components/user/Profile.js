@@ -36,9 +36,15 @@ const Profile = () => {
 						<div className="card w-96 shadow-2xl bg-base-100">
 							<div className="card-body">
 								<p className="card-title mb-5 ">My Profile</p>
-								<p className="text-blue-600">{userInfo[0]?.user_type==='D' && 'Donar' }</p>
-								<p className="text-blue-600">{userInfo[0]?.user_type==='A' && 'Agent' }</p>
-								<p className="text-blue-600">{userInfo[0]?.user_type==='AD' && 'Admin' }</p>
+								<p className="text-blue-600">
+									{userInfo[0]?.user_type === 'D' && 'Donar'}
+								</p>
+								<p className="text-blue-600">
+									{userInfo[0]?.user_type === 'A' && 'Agent'}
+								</p>
+								<p className="text-blue-600">
+									{userInfo[0]?.user_type === 'AD' && 'Admin'}
+								</p>
 								<div className="form-control">
 									<label className="label">
 										<span className="label-text">Full Name</span>
@@ -64,9 +70,22 @@ const Profile = () => {
 									/>
 								</div>
 
-								{/* <div className="form-control mt-6">
-								<button className="btn btn-primary">Login</button>
-							</div> */}
+								{(userInfo[0]?.user_type === 'AD' || userInfo.is_staff) && (
+									<div className="form-control mt-6 p-1">
+										<p className="font-mono text-blue-900 m-1">
+											You are an admin, You can use admin dashboard
+										</p>
+
+										<a
+											href="http://localhost:8000/admin/"
+											target="_blank"
+											rel="noreferrer"
+											className="btn btn-outline btn-primary"
+										>
+											GO TO ADMIN DASHBOARD
+										</a>
+									</div>
+								)}
 							</div>
 						</div>
 					</div>
@@ -83,11 +102,7 @@ const Profile = () => {
 		default:
 			break;
 	}
-	return (
-		<div className="mt-0 ">
-			{content}
-		</div>
-	);
+	return <div className="mt-0 ">{content}</div>;
 };
 
 export default Profile;

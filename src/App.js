@@ -14,6 +14,8 @@ import Profile from './components/user/Profile';
 import Donation from './components/donar/Donation';
 import Donar from './components/donar/Donar';
 import Footer from './components/footer/Footer';
+import Order from './components/agent/Order';
+import Agent from './components/agent/Agent';
 
 
 function App() {
@@ -42,8 +44,12 @@ function App() {
 						<Route path="/donar/donation" element={<Donation />} />
 
 					</Route>
+					<Route path="/agent" element={<Agent />} >
+						<Route path="/agent/order" element={<Order />} />
+
+					</Route>
 				</Routes>
-				<Footer/>
+				
 			</BrowserRouter>
 		</div>
 	);

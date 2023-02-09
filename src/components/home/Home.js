@@ -1,8 +1,9 @@
 import React from 'react';
+import Footer from '../footer/Footer';
 
 const Home = () => {
 	return (
-		<div className="hero min-h-screen bg-base-200">
+		<div><div className="hero min-h-screen bg-base-200">
 			<div className="hero-content text-center">
 				<div className="max-w-xl">
 					<h1 className="text-5xl font-bold">Warm Hugs</h1>
@@ -15,6 +16,9 @@ const Home = () => {
 					<button className="btn btn-primary">Get Started</button>
 				</div>
 			</div>
+		</div>
+
+			<Footer />
 		</div>
 	);
 };

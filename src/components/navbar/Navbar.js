@@ -33,6 +33,9 @@ const Navbar = () => {
 	const onClickDonation = () => {
 		navigate('/donar/donation');
 	};
+	const onClickAgent = () => {
+		navigate('/agent/order');
+	};
 
 	return (
 		<>
@@ -69,6 +72,9 @@ const Navbar = () => {
 								<button onClick={onClickProfile}>Donation</button>
 							</li>
 							<li>
+								<button onClick={onClickAgent}>Agent</button>
+							</li>
+							<li>
 								<button onClick={onClickAboutUs}>About Us</button>
 							</li>
 
@@ -93,6 +99,9 @@ const Navbar = () => {
 						</li>
 						<li>
 							<button onClick={onClickDonation}>Donation</button>
+						</li>
+						<li>
+							<button onClick={onClickAgent}>Agent</button>
 						</li>
 						<li>
 							<button onClick={onClickContactUs}>Contact Us</button>
@@ -128,6 +137,14 @@ const Navbar = () => {
 							Login
 						</button>
 					)}
+					<a
+						href="http://localhost:8000/admin/"
+						target="_blank"
+						rel="noreferrer"
+						className="btn btn-outline btn-primary mx-1 hidden lg:flex"
+					>
+						GO TO ADMIN DASHBOARD
+					</a>
 				</div>
 			</div>
 		</>

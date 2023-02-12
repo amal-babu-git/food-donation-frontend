@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchUserInfo, getLoginInError, getLoginInStatus, login, selectAccessToken, setLoginStatusToNull, } from '../../features/auth/authUserSlice';
-
+import bg from '../../images/bg.png'
 
 const Login = () => {
 
@@ -99,11 +99,11 @@ const Login = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold mt-10">Login now!</h1>
-            <p className="py-6">
+            <h1 className="text-5xl font-bold mt-10 ">Login now!</h1>
+            <p className="py-6  font-semibold">
               "Join the fight against hunger by logging into your Warm Hugs account. Here, you'll have the power to make a difference, one meal at a time."
             </p>
-            
+
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div className="card-body">

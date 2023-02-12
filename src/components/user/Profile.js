@@ -31,7 +31,7 @@ const Profile = () => {
 		case SUCCESS:
 			// console.log("email",userInfo[0]?.email)
 			content = (
-				<div className="hero min-h-screen bg-base-200">
+				<div className="hero min-h-screen bg-base-200" style={{ backgroundImage: `url("https://serudsindia.org/wp-content/uploads/2020/11/Donate-Money-For-Food-In-India-To-Special-Charity-Programs-1228x691.png")` }}>
 					<div className="hero-content flex-col lg:flex-row-reverse">
 						<div className="card w-96 shadow-2xl bg-base-100">
 							<div className="card-body">

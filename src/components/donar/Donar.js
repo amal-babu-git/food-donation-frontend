@@ -40,7 +40,7 @@ const Donar = () => {
 	
 
 	return (
-		<div className='h-screen'>
+		<div className='h-screen' >
 			{accessToken ? (
 				<Outlet />
 			) : (

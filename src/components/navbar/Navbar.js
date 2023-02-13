@@ -36,10 +36,64 @@ const Navbar = () => {
 	const onClickAgent = () => {
 		navigate('/agent/order');
 	};
+	const onClickTheme = (e) => {
+		console.log(e.target.name);
+		localStorage.setItem('theme', e.target.name);
+		window.location.reload();
+	};
+
+	const themes = [
+		'light',
+		'night',
+		'cupcake',
+		'bumblebee',
+		'emerald',
+		'corporate',
+		'synthwave',
+		'retro',
+		'cyberpunk',
+		'valentine',
+		'halloween',
+		'garden',
+		'forest',
+		'aqua',
+		'lofi',
+		'pastel',
+		'fantasy',
+		'wireframe',
+		'black',
+		'luxury',
+		'dracula',
+		'cmyk',
+		'autumn',
+		'business',
+		'acid',
+		'lemonade',
+		'coffee',
+		'winter',
+	];
+
+	const menuItems = themes.map((theme, index) => (
+		<li
+			key={index}
+			data-theme="dark"
+		>
+			<button
+				id={theme}
+				name={theme}
+				onClick={onClickTheme}
+			>
+				{theme}
+			</button>
+		</li>
+	));
 
 	return (
 		<>
-			<div className="navbar bg-base-100v fixed z-50 bg-white shadow-md">
+			<div
+				className="navbar bg-base-100v fixed z-50  shadow-md"
+				data-theme={localStorage.getItem('theme', 'light')}
+			>
 				<div className="navbar-start">
 					<div className="dropdown">
 						<label
@@ -81,6 +135,21 @@ const Navbar = () => {
 							<li>
 								<button onClick={onClickContactUs}>Contact Us</button>
 							</li>
+							<li tabIndex={0}>
+								<button>
+									Theme
+									<svg
+										className="fill-current"
+										xmlns="http://www.w3.org/2000/svg"
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+									>
+										<path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+									</svg>
+								</button>
+								<ul className="p-2">{menuItems}</ul>
+							</li>
 						</ul>
 					</div>
 
@@ -108,6 +177,22 @@ const Navbar = () => {
 						</li>
 						<li>
 							<button onClick={onClickAboutUs}>About Us</button>
+						</li>
+
+						<li tabIndex={0}>
+							<button>
+								Theme
+								<svg
+									className="fill-current"
+									xmlns="http://www.w3.org/2000/svg"
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+								>
+									<path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+								</svg>
+							</button>
+							<ul className="p-2">{menuItems}</ul>
 						</li>
 					</ul>
 				</div>

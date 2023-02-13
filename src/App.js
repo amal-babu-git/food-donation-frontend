@@ -20,7 +20,7 @@ import Agent from './components/agent/Agent';
 
 function App() {
 	return (
-		<div>
+		<div data-theme={localStorage.getItem('theme','light')}>
 			<ToastContainer />
 			<BrowserRouter>
 				{/* public */}

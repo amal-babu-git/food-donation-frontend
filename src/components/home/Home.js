@@ -10,9 +10,9 @@ const Home = () => {
 	}
 
 	return (
-		<>
+		<><p className='-'>-</p>
 			{/* <div className='w-screen' ><Carousel /></div> */}
-			<div className="hero min-h-screen" style={{ backgroundImage: `url("https://serudsindia.org/wp-content/uploads/2020/11/Donate-Money-For-Food-In-India-To-Special-Charity-Programs-1228x691.png")` }}>
+			<div className="hero min-h-screen mt-10 " style={{ backgroundImage: `url("https://serudsindia.org/wp-content/uploads/2020/11/Donate-Money-For-Food-In-India-To-Special-Charity-Programs-1228x691.png")` }}>
 				
 				<div className="hero-overlay bg-opacity-60"></div>
 				<div className="hero-content text-center text-neutral-content">

@@ -123,7 +123,7 @@ const Navbar = () => {
 								<button onClick={onClickProfile}>Profile</button>
 							</li>
 							<li>
-								<button onClick={onClickProfile}>Donation</button>
+								<button onClick={onClickDonation}>Donation</button>
 							</li>
 							<li>
 								<button onClick={onClickAgent}>Agent</button>
@@ -223,7 +223,7 @@ const Navbar = () => {
 						</button>
 					)}
 					<a
-						href="http://localhost:8000/admin/"
+						href="https://api.fooddonation.amalbabudev.in/admin/"
 						target="_blank"
 						rel="noreferrer"
 						className="btn btn-outline btn-primary mx-1 hidden lg:flex"

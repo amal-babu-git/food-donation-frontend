@@ -3,23 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { selectAccessToken, selectUserInfo } from '../../features/auth/authUserSlice';
 import axiosInstance from '../../features/auth/axios';
-import { AGENT_ORDER_API } from '../../apis';
+import { AGENT_ORDER_API, FAILED, IDLE, LOADING, SUCCESS } from '../../apis';
 import { toast } from 'react-toastify';
-import { setAgentOrders } from '../../features/agent/agentSlice';
+import { fetchOrders, getFetchOrdersError, getFetchOrdersStatus, setAgentOrders } from '../../features/agent/agentSlice';
 
 const Agent = () => {
 
     const accessToken = useSelector(selectAccessToken);
-    const userInfo = useSelector(selectUserInfo);
+    // const userInfo = useSelector(selectUserInfo);
     const dispatch = useDispatch()
 
     useEffect(() => {
-        
-        if (accessToken !== null) {
-            fetchOrders()
-        }
-
+        fetchOrders()
     }, [])
+
 
 
     const fetchOrders = async () => {

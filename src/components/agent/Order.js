@@ -1,16 +1,16 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import { selectAgentOrders } from '../../features/agent/agentSlice';
-import {
-	fetchUserInfo,
-	selectUserInfo,
-} from '../../features/auth/authUserSlice';
+// import {
+// 	fetchUserInfo,
+// 	selectUserInfo,
+// } from '../../features/auth/authUserSlice';
 import Card from './Card';
 
 const Order = () => {
 	const orders = useSelector(selectAgentOrders);
-	const userInfo = useSelector(selectUserInfo);
-	const dispatch = useDispatch();
+	// const userInfo = useSelector(selectUserInfo);
+	// const dispatch = useDispatch();
 
 	let content = '';
 

@@ -53,9 +53,6 @@ const Login = () => {
     if (values.password.length < 6) {
       errors.password = 'Password must be more than 5 character';
     }
-    if (!(values.password === values.confirm_password)) {
-      errors.confirm_password = "Password doesn's match";
-    }
 
     console.log(errors);
     return errors;
@@ -149,45 +146,6 @@ const Login = () => {
 								</label> */}
               </div>
 
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Confirm Password</span>
-                </label>
-                <input
-                  type="password"
-                  placeholder="password"
-                  className="input input-bordered input-primary"
-                  id="confirm_password"
-                  name="confirm_password"
-                  onChange={onChangeInputFieldsHandler}
-                  value={formValues.confirm_password}
-                  required
-                />
-                <p className="text-red-500">{formErrors.confirm_password}</p>
-              </div>
-
-              {/* <div className="form-control">
-                <label className="label cursor-pointer">
-                  <span className="label-text">Donar</span>
-                  <input
-                    type="radio"
-                    name="user_type"
-                    className="radio checked:bg-blue-500"
-
-                  />
-                </label>
-              </div>
-              <div className="form-control">
-                <label className="label cursor-pointer">
-                  <span className="label-text">Agent</span>
-                  <input
-                    type="radio"
-                    name="user_type"
-                    className="radio checked:bg-blue-500"
-
-                  />
-                </label>
-              </div> */}
 
               <div className="form-control mt-6">
                 <button className="btn btn-primary" onClick={onSubmitHandler}>Login</button>

@@ -5,17 +5,17 @@ import Modal from './Modal';
 const Card = ({ order }) => {
 	const [collected, setCollected] = useState(false);
 
-    useEffect(()=>{
-        if(collected){
+	useEffect(() => {
+		if (collected) {
 
-        }
-    },[collected])
+		}
+	}, [collected])
 
 
-    // TODO:
-    // const updateCollectedStatus=async()=>{
-    //     await axiosInstance.is
-    // }
+	// TODO:
+	// const updateCollectedStatus=async()=>{
+	//     await axiosInstance.is
+	// }
 
 
 	return (
@@ -62,7 +62,8 @@ const Card = ({ order }) => {
 				</div>
 
 				<div className="form-control w-52">
-					<Modal order_id={order?.id}/>
+					{!order?.is_collected && <Modal order_id={order?.id} />}
+
 				</div>
 			</div>
 		</div>

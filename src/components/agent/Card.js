@@ -1,23 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axiosInstance from '../../features/auth/axios';
 import Modal from './Modal';
 
 const Card = ({ order }) => {
-	const [collected, setCollected] = useState(false);
-
-	useEffect(() => {
-		if (collected) {
-
-		}
-	}, [collected])
-
-
-	// TODO:
-	// const updateCollectedStatus=async()=>{
-	//     await axiosInstance.is
-	// }
-
-
 	return (
 		<div className="card w-96 shadow-xl bg-base-100">
 			<div className="card-body">
@@ -63,7 +47,7 @@ const Card = ({ order }) => {
 
 				<div className="form-control w-52">
 					{!order?.is_collected && <Modal order_id={order?.id} />}
-
+					
 				</div>
 			</div>
 		</div>

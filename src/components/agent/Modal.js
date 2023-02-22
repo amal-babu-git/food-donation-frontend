@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axiosInstance from '../../features/auth/axios';
 import { AGENT_ORDER_API } from '../../apis';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { fetchOrders } from '../../features/agent/agentSlice';
+import AlertInfo from '../Utils/AlertInfo';
 
 const Modal = ({ order_id = 0 }) => {
+	const dispatch = useDispatch();
+	const [refreshAlert, setRefreshAlert] = useState(false);
+
+
 	const onClickCollected = async () => {
 		await axiosInstance
 			.put(`${AGENT_ORDER_API}${order_id}/`, {
@@ -11,8 +18,10 @@ const Modal = ({ order_id = 0 }) => {
 			})
 
 			.then((response) => {
+                setRefreshAlert(true);
 				console.log(response.data);
-				toast.success('updated', { hideProgressBar: true });
+				dispatch(fetchOrders());
+				toast.success('updated,', { hideProgressBar: true });
 			})
 			.catch((err) => {
 				console.log(err.data);
@@ -22,9 +31,11 @@ const Modal = ({ order_id = 0 }) => {
 
 	return (
 		<div>
+            {/* show an alert dialog for suggest user to refresh the window if not updated in the status , but updated in backend,*/}
+			{refreshAlert && <AlertInfo message={'If order updated status not changed, please refresh!'} />}
 			<label
 				htmlFor="my-modal"
-				className="btn btn-sm btn-outline"
+				className="btn btn-sm btn-outline m-1"
 			>
 				Make Collected
 			</label>
@@ -42,10 +53,16 @@ const Modal = ({ order_id = 0 }) => {
 					<div className="modal-action">
 						<label
 							htmlFor="my-modal"
-							className="btn btn-primary"
-                            onClick={onClickCollected}
+							className="btn"
+							onClick={onClickCollected}
 						>
-							Yes
+							Confirm
+						</label>
+						<label
+							htmlFor="my-modal"
+							className="btn"
+						>
+							Cancel
 						</label>
 					</div>
 				</div>

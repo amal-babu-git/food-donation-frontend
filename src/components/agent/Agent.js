@@ -18,7 +18,7 @@ const Agent = () => {
     }, [])
 
 
-
+// fetching orders, FIXME:the problem is its redundant
     const fetchOrders = async () => {
         await axiosInstance.get(AGENT_ORDER_API)
             .then((response) => {

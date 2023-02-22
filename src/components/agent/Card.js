@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axiosInstance from '../../features/auth/axios';
+import Modal from './Modal';
 
 const Card = ({ order }) => {
 	const [collected, setCollected] = useState(false);
@@ -60,17 +61,9 @@ const Card = ({ order }) => {
 					</table>
 				</div>
 
-				{/* <div className="form-control w-52">
-					<label className="cursor-pointer label">
-						<span className="label-text">Collected</span>
-						<input
-							type="checkbox"
-							className="toggle toggle-primary"
-                            onChange={()=>setCollected(true)}
-                            // disabled={collected}
-						/>
-					</label>
-				</div> */}
+				<div className="form-control w-52">
+					<Modal order_id={order?.id}/>
+				</div>
 			</div>
 		</div>
 	);

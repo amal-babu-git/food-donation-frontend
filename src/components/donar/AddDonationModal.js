@@ -15,7 +15,7 @@ const AddDonationModal = () => {
 		address: '',
 	};
 
-	const dispatch=useDispatch()
+	const dispatch = useDispatch();
 
 	const [formValues, setFormValues] = useState(initialValues);
 	const [formErrors, setFormErrors] = useState({});
@@ -64,14 +64,14 @@ const AddDonationModal = () => {
 			.post(DONATION_API, formValues)
 			.then((response) => {
 				console.log('post donations', response.data);
-				fetchDonations()
-				toast.success("Successfully added",{hideProgressBar:true})
-				formValues.address=''
-				formValues.contact=''
-				formValues.food_name=''
-				formValues.food_type=''
-				formValues.quantity=''
-				
+				fetchDonations();
+				toast.success('Successfully added', { hideProgressBar: true });
+				document.getElementById('my-modal-5').click();
+				formValues.address = '';
+				formValues.contact = '';
+				formValues.food_name = '';
+				formValues.food_type = '';
+				formValues.quantity = '';
 			})
 			.catch((err) => {
 				console.log(err);

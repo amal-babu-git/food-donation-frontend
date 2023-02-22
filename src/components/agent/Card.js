@@ -44,10 +44,10 @@ const Card = ({ order }) => {
 								<th>Donar Contact</th>
 								<td>{order?.donar_contact}</td>
 							</tr>
-							<tr>
+							{/* <tr>
 								<th>Agent</th>
 								<td>{order?.user}</td>
-							</tr>
+							</tr> */}
 							<tr>
 								<th>Is Collected</th>
 								{order?.is_collected ? (

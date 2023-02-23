@@ -9,6 +9,24 @@ import BookModal from './BookModal'
 
 const Card = ({ donation }) => {
 
+    const booked_date = new Date(donation.post_at).getDate();
+    const booked_month = new Date(donation.post_at).getMonth();
+    const booked_year = new Date(donation.post_at).getFullYear();
+    const booked_hour = new Date(donation.post_at).getHours();
+    const booked_minute = new Date(donation.post_at).getMinutes();
+
+    const posted_at =
+        booked_hour +
+        ':' +
+        booked_minute +
+        ' (' +
+        booked_date +
+        '/' +
+        booked_month +
+        '/' +
+        booked_year +
+        ')';
+
     const userInfo = useSelector(selectUserInfo)
     const food_type = donation?.food_type
     const [loading, setLoading] = useState(false)
@@ -117,6 +135,11 @@ const Card = ({ donation }) => {
                             <tr>
                                 <th>Donar</th>
                                 <td>{donation.user}</td>
+
+                            </tr>
+                            <tr>
+                                <th>Posted at</th>
+                                <td>{posted_at}</td>
 
                             </tr>
                             <tr>

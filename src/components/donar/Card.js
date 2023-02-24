@@ -44,6 +44,7 @@ const Card = ({ donation }) => {
 
     const onClickBook = async () => {
         setLoading(true)
+        toast.info("It will take some time, please wait")
         await axiosInstance.post(AGENT_ORDER_API, {
             "food_details": food_details,
             "donar_details": donar_details,
@@ -53,7 +54,6 @@ const Card = ({ donation }) => {
             .then((response) => {
                 console.log('booking', response.data)
                 toast.success('Successfully Booked')
-                setLoading(true)
                 updateIsBookedStatus()
                 // fetchDonations()
 

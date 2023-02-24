@@ -4,9 +4,6 @@ import { selectUserInfo } from '../../features/auth/authUserSlice'
 import axiosInstance from '../../features/auth/axios'
 import { AGENT_ORDER_API, DONATION_API } from '../../apis'
 import { toast } from 'react-toastify'
-import { setDonations } from '../../features/donar/donarSlice'
-import BookModal from './BookModal'
-
 const Card = ({ donation }) => {
 
     const booked_date = new Date(donation.post_at).getDate();
@@ -155,9 +152,6 @@ const Card = ({ donation }) => {
                 <div>
                     {
                         (userInfo[0]?.user_type === 'A' && !donation?.is_booked) && <button onClick={onClickBook} disabled={loading} className='btn btn-outline btn-primary m-1'>Book </button>
-                    }
-                    {
-                        donation?.is_booked && true && <BookModal donation={donation} agent={selectUserInfo} />
                     }
                 </div>
             </div>

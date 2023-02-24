@@ -37,6 +37,8 @@ const Card = ({ donation }) => {
         food_t = 'Veg'
     }
     const food_details = donation?.food_name + ', ' + food_t
+    // FIXME: fix this complex process in future
+    // donation.user is email of user, don't change it, this email used to send email notification to donar after booked by an agent
     const donar_details = donation?.user + ', ' + donation.address
     const donar_contact = donation?.contact
 
@@ -106,40 +108,45 @@ const Card = ({ donation }) => {
                         {/* <!-- head --> */}
 
                         <tbody>
-
                             <tr>
+                                <th>Donation ID</th>
+                                <td>{donation?.id}</td>
+
+                            </tr>
+                            <tr className='active'>
                                 <th>Food name</th>
                                 <td>{donation?.food_name}</td>
 
                             </tr>
 
-                            <tr className="active">
+
+                            <tr >
                                 <th>Food type</th>
                                 {(donation?.food_type === 'V') && <td> Veg </td>}
                                 {(donation?.food_type === 'N') && <td> Non-Veg </td>}
                             </tr>
 
-                            <tr>
+                            <tr className='active'>
                                 <th>Address</th>
                                 <td>{donation.address}</td>
 
                             </tr>
-                            <tr className='active'>
+                            <tr >
                                 <th>Contact</th>
                                 <td>{donation.contact}</td>
 
                             </tr>
-                            <tr>
+                            <tr className='active'>
                                 <th>Donar</th>
                                 <td>{donation.user}</td>
 
                             </tr>
-                            <tr>
+                            <tr >
                                 <th>Posted at</th>
                                 <td>{posted_at}</td>
 
                             </tr>
-                            <tr>
+                            <tr className='active'>
                                 <th>Is Booked</th>
                                 {(donation?.is_booked) && <td> Booked </td>}
                                 {(!donation?.is_booked) && <td> Not Booked </td>}

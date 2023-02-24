@@ -55,7 +55,7 @@ const Card = ({ order }) => {
 								<th>Agent</th>
 								<td>{order?.user}</td>
 							</tr> */}
-							<tr>
+							<tr className='active'>
 								<th>Is Collected</th>
 								{order?.is_collected ? (
 									<td className="text-blue-400">Collected</td>

@@ -1,13 +1,19 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { logout, selectAccessToken } from '../../features/auth/authUserSlice';
+import {
+	logout,
+	selectAccessToken,
+	selectUserInfo,
+} from '../../features/auth/authUserSlice';
+import AnchorLink from 'react-anchor-link-smooth-scroll-v2';
 // import { NavLink, Link } from 'react-router-dom';
 
 const Navbar = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const accessToken = useSelector(selectAccessToken);
+	const userInfo = useSelector(selectUserInfo);
 
 	const onClickLogo = () => {
 		navigate('/');
@@ -163,23 +169,46 @@ const Navbar = () => {
 				</div>
 				<div className="navbar-center hidden lg:flex">
 					<ul className="menu menu-horizontal px-1">
-						<li>
-							<button onClick={onClickProfile}>Profile</button>
-						</li>
-						<li>
-							<button onClick={onClickDonation}>Donation</button>
-						</li>
-						<li>
-							<button onClick={onClickAgent}>Agent</button>
-						</li>
-						<li>
-							<button onClick={onClickContactUs}>Contact Us</button>
-						</li>
+						{/* show only for logged users */}
+						{accessToken !== null && (
+							<li>
+								<button onClick={onClickProfile}>Profile</button>
+							</li>
+						)}
+
+						{/* Agent */}
+						{accessToken !== null && userInfo[0]?.user_type === 'A' && (
+							<>
+								<li>
+									<button onClick={onClickDonation}>Donation</button>
+								</li>
+								<li>
+									<button onClick={onClickAgent}>Agent</button>
+								</li>
+							</>
+						)}
+						{/* Donar */}
+						{accessToken !== null && userInfo[0]?.user_type === 'D' && (
+							<>
+								<li>
+									<button onClick={onClickDonation}>Donation</button>
+								</li>
+							</>
+						)}
+
 						<li>
 							<button onClick={onClickAboutUs}>About Us</button>
+							{/* <AnchorLink href="#about">About Us</AnchorLink> */}
 						</li>
 
-						<li tabIndex={0}>
+						<li>
+							<button onClick={onClickContactUs}>Contact Us</button>
+							{/* <a href="#contact">Contact Us</a> */}
+							{/* <AnchorLink href="#contact">Contact Us</AnchorLink> */}
+						</li>
+
+						{/* theme */}
+						{/* <li tabIndex={0}>
 							<button>
 								Theme
 								<svg
@@ -193,7 +222,7 @@ const Navbar = () => {
 								</svg>
 							</button>
 							<ul className="p-2">{menuItems}</ul>
-						</li>
+						</li> */}
 					</ul>
 				</div>
 				<div className="navbar-end">
@@ -223,7 +252,8 @@ const Navbar = () => {
 						</button>
 					)}
 					<a
-						href="https://api.fooddonation.amalbabudev.in/admin/"
+						href="http://127.0.0.1:8000/admin/"
+						// href="https://api.fooddonation.amalbabudev.in/admin/"
 						target="_blank"
 						rel="noreferrer"
 						className="btn btn-outline btn-primary mx-1 hidden lg:flex"

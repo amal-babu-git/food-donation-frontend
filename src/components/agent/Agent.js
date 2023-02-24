@@ -35,7 +35,7 @@ const Agent = () => {
     }
 
     return (
-        <div className='h-screen'>
+        <div id='agent' className='h-screen'>
             {accessToken ? (
                 <Outlet />
             ) : (

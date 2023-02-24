@@ -29,7 +29,7 @@ const Donation = () => {
 				user_type==='D' && <AddDonationModal />
 			}
 			
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center gap-x-3 gap-y-3 mt-10">
+			<div id='donation' className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center gap-x-3 gap-y-3 mt-10">
 				{content}
 			</div>
 		</div>

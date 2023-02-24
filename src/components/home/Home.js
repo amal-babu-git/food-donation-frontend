@@ -1,7 +1,9 @@
 import React from 'react';
 import Footer from '../footer/Footer';
 import { useNavigate } from 'react-router-dom';
-import Carousel from './Carousel';
+// import Carousel from './Carousel';
+import About from '../aboutus/About';
+import Contact from '../aboutus/Contact';
 
 const Home = () => {
 	const navigate = useNavigate()
@@ -12,7 +14,7 @@ const Home = () => {
 	return (
 		<><p className='-'>-</p>
 			{/* <div className='w-screen' ><Carousel /></div> */}
-			<div className="hero min-h-screen mt-10 " style={{ backgroundImage: `url("https://serudsindia.org/wp-content/uploads/2020/11/Donate-Money-For-Food-In-India-To-Special-Charity-Programs-1228x691.png")` }}>
+			<div id='home' className="hero min-h-screen mt-10 " style={{ backgroundImage: `url("https://serudsindia.org/wp-content/uploads/2020/11/Donate-Money-For-Food-In-India-To-Special-Charity-Programs-1228x691.png")` }}>
 				
 				<div className="hero-overlay bg-opacity-60"></div>
 				<div className="hero-content text-center text-neutral-content">
@@ -26,8 +28,9 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
-
-			<Footer />
+			<About/>
+			<Contact/>
+			<Footer/>
 		</>
 	);
 };

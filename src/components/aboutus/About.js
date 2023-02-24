@@ -3,7 +3,7 @@ import Carousel from '../home/Carousel'
 
 const About = () => {
   return (
-    <div className="hero min-h-screen bg-base-200" >
+    <div className="hero min-h-screen bg-base-200" id='about'>
       <div className="hero-content flex-col lg:flex-row">
         {/* <img src="https://www.scotaid.org.uk/wp-content/uploads/2022/10/sadqasinglepage-paraimg.jpg" className="max-w-sm rounded-lg shadow-2xl" /> */}
         <Carousel/>

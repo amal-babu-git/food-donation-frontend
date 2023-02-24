@@ -5,16 +5,17 @@ import { store } from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import { fetchUserInfo } from './features/auth/authUserSlice';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-
+store.dispatch(fetchUserInfo())
 root.render(
-  
-    <Provider store={store}>
-      <App />
-    </Provider>
- 
+
+  <Provider store={store}>
+    <App />
+  </Provider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

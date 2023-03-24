@@ -208,7 +208,7 @@ const Navbar = () => {
 						</li>
 
 						{/* theme */}
-						{/* <li tabIndex={0}>
+						<li tabIndex={0}>
 							<button>
 								Theme
 								<svg
@@ -222,7 +222,7 @@ const Navbar = () => {
 								</svg>
 							</button>
 							<ul className="p-2">{menuItems}</ul>
-						</li> */}
+						</li>
 					</ul>
 				</div>
 				<div className="navbar-end">
